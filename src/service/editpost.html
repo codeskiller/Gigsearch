@@ -1,0 +1,67 @@
+
+<template name="EditPost">
+    <form class="editpost">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="serviceTitle">Title</label>
+                    <input type="text" value={{service.title}} class="form-control" name="serviceTitle" id="serviceTitle" placeholder="Title">
+                </div>
+            </div>
+            <div class="col-xs-6">
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-xs-6">
+
+            <label for="category">Category</label>
+            <br />
+            {{> categoryDropdown}}
+            <!--    <select name="category">
+
+                        <option value= "" >Select Category</option>
+                        <option value= "Clarinet" >Clarinet</option>
+                        <option value= "Company Music" >Company Music</option>
+                        <option value= "Church Music" >Church Music</option>
+                        <option value= "Mysic Academy<" >Mysic Academy</option>
+                        <option value= "Opera/Dance" >Opera/Dance</option>
+                        <option value= "Private Music" >Private Music</option>
+                        <option value= "Violin<" >Violin</option>
+                        <option value= "Voice/Choir" >Voice/Choir</option>
+
+                </select> -->
+
+               
+            </div>
+            <div class="col-xs-6">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="serviceDscription">Description</label>
+                    <textarea style="resize: none;" class="form-control" name="serviceDescription" id="serviceDescription" value={{service.description}} placeholder="Describe the job in detail."></textarea>
+                </div>
+            </div>
+            <div class="col-xs-6">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="serviceWage">Wage</label>
+                    <b>$</b><input type="text" value={{service.wage}} class="form-control" name="serviceWage" id="serviceWage" placeholder="0.00">
+                </div>
+     
+            </div>
+            <div class="col-xs-6">
+                <i>Todo: explain importance of wages here, and how you can pay in a lump sum, etc.</i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button class="btn btn-success" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</template>

@@ -1,0 +1,59 @@
+<template name="contractPage">
+    <h2>Contract of Agreement</h2>
+    <div class="contract-template">
+        <p><strong>{{displayName employer}}</strong> will agree to pay <strong>{{displayName musician}}</strong> for the amount of <strong>${{service.wage}}</strong> in exchange for his/her services.</p>
+        <p>By signing this form below, both <strong>{{displayName employer}}</strong> and <strong>{{displayName musician}}</strong> will agree to the following terms previously set forth by <strong>{{displayName employer}}</strong>'s service posting:</p>
+        <div class="well">
+            <h4><strong>{{service.title}}</strong></h4>
+            <p>{{service.description}}</p>
+            <p>Wage:
+                {{#if application.editingWage}}
+                    <form class="contract-edit-wage-submit">
+                        <input type="number" name="serviceWage" value={{service.wage}} placeholder="Enter wage"/>
+                        <button type="input" class="btn btn-secondary btn-xs">Submit</button>
+                    </form>
+                {{else}}
+                    ${{application.wage}}
+                    <!-- <a class="contract-edit-wage btn btn-secondary btn-xs" role="button" type="submit">Edit pay</a> -->
+                {{/if}}
+            </p>
+        </div>
+    </div>
+            <hr />
+
+    <div>
+        <h4>Terms of Service</h4>
+        {{#if applicationSync.tosUrl}}
+            <embed src="{{applicationSync.tosUrl}}" width="100%" height="500px">
+        {{else}}
+            {{#if isEmployer}}
+                {{> upload_bootstrap contentType='pdfs' fileTypes='.pdf' callbacks=uploadCallbacks }}
+            {{/if}}
+        {{/if}}
+    </div>
+    
+    <br />
+    {{#if userId}}
+        {{#if isEmployer}}
+            <form class="contract-signature-employer">
+                {{#if applicationSync.tosUrl}}
+                    {{#if not service.signedByEmployer}}
+                        <input class="btn btn-primary" type="submit" value="Send Contract"/>
+                    {{/if}}
+                    <a class="btn btn-danger contract-remove-tos">Remove ToS</a>
+                {{/if}}
+            </form>
+        {{else}}
+            {{#if not service.signedByMusician}}
+                <form class="contract-signature-musician input-group">
+                    <input type="text" class="form-control" placeholder="Musican signature" />
+                    <span class="input-group-btn">
+                        <input class="btn btn-primary" type="submit" value="Sign contract"/>
+                    </span>
+                </form>
+            {{else}}
+                <p>Already signed!</p>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+</template>

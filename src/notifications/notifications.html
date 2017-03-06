@@ -1,0 +1,42 @@
+<template name="notificationNewApplication">
+  <li style="{{readStyle templateData}}"><a href="/gig/{{templateData.gigId}}/gigApplications/{{templateData.application}}"><div style="width: 300px; padding: 5px; white-space: normal;">New application from <strong>{{displayName templateData.from}}</strong> for <strong>{{displayGigName templateData.gigId}}</strong></div></a></li>
+  <li role="separator" class="divider"></li>
+</template>
+
+<template name="notificationContractSent">
+  <li style="{{readStyle templateData}}"><a href="/contract/{{templateData.application}}"><div style="width: 300px; padding: 5px; white-space: normal;">Contract sent from <strong>{{displayName templateData.from}}</strong> for <strong>{{displayGigName templateData.gigId}}</strong></div></a></li>
+  <li role="separator" class="divider"></li>
+</template>
+
+<template name="notificationWageUpdated">
+  <li style="{{readStyle templateData}}"><a href="/contract/{{templateData.application}}"><div style="width: 300px; padding: 5px; white-space: normal;"><strong>{{displayName templateData.from}}</strong> changed the wage for <strong>{{displayGigName templateData.gigId}}</strong></div></a></li>
+  <li role="separator" class="divider"></li>
+</template>
+
+<template name="notificationContractSigned">
+  <li style="{{readStyle templateData}}"><a href="/gig/{{templateData.gigId}}/gigApplications/{{templateData.application}}"><div style="width: 300px; padding: 5px; white-space: normal;">Contract signed by <strong>{{displayName templateData.from}}</strong> for <strong>{{displayGigName templateData.gigId}}</strong></div></a></li>
+  <li role="separator" class="divider"></li>
+</template>
+
+<template name="notifications">
+
+  <div class="btn-group">
+      <button type="button" class="btn btn-{{notificationClass}} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{#if hasUnreadNotifications}}
+            {{notificationCount}}
+          {{else}}
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+          {{/if}}
+      </button>
+      <ul class="dropdown-menu">
+          {{#if hasNotifications}}
+            {{#each notifications}}
+              {{> Template.dynamic template=type}}
+            {{/each}}
+          {{else}}
+            <li><div style="margin: 20px;" class="text-muted text-center">You have no notifications.</div></li>
+          {{/if}}
+      </ul>
+  </div>
+  
+</template>
