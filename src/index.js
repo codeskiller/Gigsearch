@@ -85,7 +85,11 @@ if (Meteor.isClient) {
 
 
     Template.index.helpers({
-        filteredPosts: function () {
+        "noFilter": function(){
+            return Services.find({});
+        },
+        "filteredPosts": function () {
+
             var ListId = Session.get('selectedListId');
             var filter = Session.get('filter');
 
@@ -111,7 +115,7 @@ if (Meteor.isClient) {
 
         },
 
-        filteredDate: function () {
+        "filteredDate": function () {
             var filter = Session.get('filter');
 
             if (filter != null) {
@@ -124,6 +128,13 @@ if (Meteor.isClient) {
 
 
     Template.index.events({
+        "": function (event) {
+            var x = document.getElementById("category").selectedIndex;
+            var y = document.getElementsByTagName("option");
+
+             var ListId = y.value;
+            Session.set('selectedListId', ListId);
+        },
 
         "change .category": function (event) {
             // event.preventDefault();

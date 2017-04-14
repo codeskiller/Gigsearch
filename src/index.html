@@ -81,9 +81,7 @@
         </form>
 <!-- 
         <div class="col-xs-6">
-
             <b>Date</b>
-
             <span >
                 <div>                        
                     <a class="a-link-normal dateFilter" data-filter="1" href="#">In 1 day</a>
@@ -121,15 +119,22 @@
             <hr/>
                 <h4>Search Result</h4>
    
-                 
                 <div class="row">
-                    {{#each filteredPosts}}
                    
-                        <div class="col-xs-12 col-md-6">
-                            {{> serviceListing service=this}}
-                        </div>
-
-                    {{/each}}
+                   
+                        {{#each filteredPosts}}
+                            {{#if noFilter}}
+                                 <div class="col-xs-12 col-md-6">
+                                    {{> serviceListing service=this}}
+                                </div>
+                            {{else}}
+                            <div class="col-xs-12 col-md-6">
+                                {{> serviceListing service=this}}
+                            </div>
+                            {{/if}}
+                        {{/each}}
+                
+                    
                 </div>
 
 
