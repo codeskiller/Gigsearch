@@ -55,7 +55,7 @@ if (Meteor.isClient) {
         },
         "mapOptions": function() {
             // Make sure the maps API has loaded
-            if (GoogleMaps.loaded({ key: 'AIzaSyAjP7EYtmQzcW3Mx918EtWn--3urQ1Dmwk' })) {
+            if (GoogleMaps.loaded()) {
                 // Map initialization options
                 return {
                     streetViewControl: false, // hide the yellow Street View pegman
