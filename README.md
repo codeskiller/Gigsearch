@@ -55,9 +55,9 @@
 ## Getting Started
 
 ### Testing Local
- • $ cd yourProjectFolder
- • $ meteor --production
- • app will run on port 3000 . url: localhost://3000
+ - $ cd yourProjectFolder
+ - $ meteor --production
+ - app will run on port 3000 . url: localhost://3000
  
 ## Authors
 
