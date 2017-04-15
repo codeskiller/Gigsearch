@@ -61,14 +61,14 @@
  
 ## Authors
 
-* **Henry** - [PurpleBooth](https://github.com/wqook)
+* **Henry** - [Link](https://github.com/wqook)
 
 See also the list of [contributors]) who participated in this project.
-Daniel Nguyen- [PurpleBooth](https://github.com/codeskiller)
-Krystle
-Karma
-Jonny
-Lyderic
+* **Daniel Nguyen**- [Link](https://github.com/codeskiller)
+* **Krystle**
+* **Karma**
+* **Jonny**
+* **Lyderic**
 
 ## License
 
