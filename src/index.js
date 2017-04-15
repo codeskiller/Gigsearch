@@ -98,14 +98,16 @@ if (Meteor.isClient) {
             console.log(filter);
 
             //if list is not empty, find category
-            if ((ListId != null && ListId.length > 0) && filter != null) {
+            if ((ListId != "All" && ListId.length > 0) && filter != null) {
                 filter.category = ListId;
                 console.log("here");
                 console.log(ListId.length);
                 return Services.find(filter).fetch().reverse();
-            } else if  ((ListId == null || ListId.length == 0) && filter == null) {
+            }
+
+            else if  ((ListId == "All" || ListId.length == 0) && filter == null) {
                 return Services.find({}).fetch().reverse();
-            } else if  ((ListId == null || ListId.length == 0) && filter != null) {
+            } else if  ((ListId == "All" || ListId.length == 0) && filter != null) {
                 console.log(ListId.length);
                 console.log(ListId);
                 return Services.find(filter).fetch().reverse();
@@ -126,18 +128,24 @@ if (Meteor.isClient) {
         }
     });
 
-
-    Template.index.events({
-        "": function (event) {
-            var x = document.getElementById("category").selectedIndex;
-            var y = document.getElementsByTagName("option");
-
-             var ListId = y.value;
+    Template.index.onRendered(function() {
+            //initiate view all category
+            var ListId = "All";
             Session.set('selectedListId', ListId);
-        },
+
+            // initiate view all for no filter 
+            var filter = event.target.getAttribute('data-filter');
+            var filterNum = parseInt(filter);
+            var start = 0;
+            var end = 0;
+           Session.set('filter', {} );
+     
+    })
+    Template.index.events({
+        
 
         "change .category": function (event) {
-            // event.preventDefault();
+            event.preventDefault();
             console.log("clicked");
 
             // var ListId = event.target.category.value;
@@ -187,23 +195,23 @@ if (Meteor.isClient) {
 
             // var countDate = currentDateFormat - datePostedFormat;
 
-            if (filterNum == -1) {
-                Session.set('filter', {} );
-                return;
-            } else if(filterNum == 24){
+            // view all since no filter
+            if (filterNum == 0) {
+                end = 1000000;   
+                
+            } else if(filterNum == 24){ // view all payments under $25
                 start = 0;
                 end = 25;
-                console.log(start, end);
-            } else if(filterNum == 50){
+            } else if(filterNum == 50){ // view all payments from $25 - $50
                 start = 25;
                 end = 50;
-            } else if(filterNum == 100){
+            } else if(filterNum == 100){ // view all payments from $50 - $100
                 start = 50;
                 end = 100;
-            } else if(filterNum == 200){
+            } else if(filterNum == 200){ // view all payments from $100 - $200
                 start = 100;
                 end = 200;
-            } else if(filterNum == 10000){
+            } else if(filterNum == 201){ // view all payments above $200
                 start = 200;
                 end = 10000000;
             } else {

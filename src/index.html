@@ -21,7 +21,7 @@
                 <b>Category</b>
                 <hr />
                 <select name="category" class="category form-control">
-                    <option value= "" >View All</option>
+                    <option value= "All" >View All</option>
                     <option value= "Rock" >Rock</option>
                     <option value= "Electronic" >Electronic</option>
                     <option value= "Jazz" >Jazz</option>
@@ -29,7 +29,7 @@
                     <option value= "Clarinet">Clarinet</option>
                     <option value= "Company Music" >Company Music</option>
                     <option value= "Church Music" >Church Music</option>
-                    <option value= "Music Academy" >Mysic Academy</option>
+                    <option value= "Music Academy" >Music Academy</option>
                     <option value= "Opera/Dance" >Opera/Dance</option>
                     <option value= "Private Music" >Private Music</option>
                     <option value= "Violin" >Violin</option>
@@ -43,7 +43,7 @@
                 
                 <span >
                     <div>                        
-                        <a class="a-link-normal wageFilter" data-filter="-1" href="#">All</a>
+                        <a class="a-link-normal wageFilter" data-filter="0" href="#">All</a>
                         
                     </div>
                 </span>
@@ -73,7 +73,7 @@
                 </span>
                 <span>
                     <div>
-                        <a class="a-link-normal wageFilter" data-filter="10000" href="#">$200+</a>
+                        <a class="a-link-normal wageFilter" data-filter="201" href="#">$200+</a>
                         
                     </div>
                 </span>
@@ -120,18 +120,13 @@
                 <h4>Search Result</h4>
    
                 <div class="row">
-                   
-                   
+                     
                         {{#each filteredPosts}}
-                            {{#if noFilter}}
-                                 <div class="col-xs-12 col-md-6">
-                                    {{> serviceListing service=this}}
-                                </div>
-                            {{else}}
+                          
                             <div class="col-xs-12 col-md-6">
                                 {{> serviceListing service=this}}
                             </div>
-                            {{/if}}
+                
                         {{/each}}
                 
                     
